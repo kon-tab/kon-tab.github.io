@@ -155,6 +155,147 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2021/06/22/python-1/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/yousa.gif">
+      <meta itemprop="name" content="Yiwen Xie">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="My Blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2021/06/22/python-1/" class="post-title-link" itemprop="url">关于selenium库的实例使用代码汇总</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2021-06-22 22:52:35" itemprop="dateCreated datePublished" datetime="2021-06-22T22:52:35+08:00">2021-06-22</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2021-06-23 15:26:23" itemprop="dateModified" datetime="2021-06-23T15:26:23+08:00">2021-06-23</time>
+              </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>1.截取网页快照代码</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> selenium.webdriver <span class="keyword">import</span> Chrome</span><br><span class="line"><span class="keyword">from</span> selenium,webdriver.chrome.options <span class="keyword">import</span> Options</span><br><span class="line"></span><br><span class="line">option=Options()  <span class="comment">#实例化</span></span><br><span class="line">option.add_argument(<span class="string">&quot;--headless&quot;</span>) <span class="comment">#给option对象添加无头参数</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#采用chromedriver作为模拟浏览器，指向chromedriver.exe所在文件位置即可</span></span><br><span class="line">driver=Chrome(executable_path=r)<span class="string">&quot;C:\Users\xyw2020\AppData\Local\Programs\Python\chromedriver.exe&quot;</span>,options=option)</span><br><span class="line"></span><br><span class="line">drive.get(<span class="string">&quot;http://www.baidu.com/&quot;</span>)  <span class="comment">#打开网页</span></span><br><span class="line">driver.set_window_size(<span class="number">1920</span>,<span class="number">1080</span>)   <span class="comment">#调整网页尺寸（直接截图截不全）</span></span><br><span class="line">driver.get_screenshot_as_file(<span class="string">&#x27;baidu.png&#x27;</span>) <span class="comment">#截取当取网页图片 </span></span><br><span class="line">driver.close()   <span class="comment">#关闭网页</span></span><br></pre></td></tr></table></figure>
+
+
+
+<p>？.其他代码汇总</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">option.add_argument(<span class="string">&#x27;--headless&#x27;</span>)</span><br><span class="line"></span><br><span class="line">--allow-outdated-plugins         不停用过期的插件。</span><br><span class="line">--disable-desktop-notifications  禁用桌面通知，在 Windows 中桌面通知默认是启用的。</span><br><span class="line">--disable-extensions             禁用拓展。</span><br><span class="line">--disable-speech-<span class="built_in">input</span>           停用语音输入。</span><br><span class="line">--disk-cache-<span class="built_in">dir</span>                 将缓存设置在给定的路径。</span><br><span class="line">--disk-cache-size                设置缓存大小上限，以字节为单位。</span><br><span class="line">--dns-prefetch-disable           停用DNS预读。</span><br><span class="line">--enable-<span class="built_in">print</span>-preview           启用打印预览。</span><br><span class="line">--extensions-update-frequency    设定拓展自动更新频率，以秒为单位。</span><br><span class="line">--incognito                      让浏览器直接以隐身模式启动。</span><br><span class="line">--keep-alive-<span class="keyword">for</span>-test            最后一个标签关闭后仍保持浏览器进程。（某种意义上可以提高热启动速度，不过你最好得有充足的内存）</span><br><span class="line">--kiosk                          启用kiosk模式。（一种类似于全屏的浏览模式）</span><br><span class="line">--lang                           使用指定的语言。eg:lang=zh_CN.UTF-<span class="number">8</span></span><br><span class="line">--no-displaying-insecure-content 默认情况下，https 页面允许从 http 链接引用图片/字体/框架。添加这一参数会阻止这些内容。</span><br><span class="line">--start-maximized                启动时最大化。</span><br><span class="line">--no-startup-window              启动时不建立窗口。</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#元素定位</span></span><br><span class="line">find_element_by_id()</span><br><span class="line">find_element_by_name()</span><br><span class="line">find_element_by_xpath()</span><br><span class="line">find_element_by_link_text()</span><br><span class="line">find_element_by_partial_link_text()</span><br><span class="line">find_element_by_tag_name()</span><br><span class="line">find_element_by_class_name()</span><br><span class="line">find_element_by_css_selector()</span><br></pre></td></tr></table></figure>
+
+
+
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2021/06/15/my-first-blog/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/yousa.gif">
+      <meta itemprop="name" content="Yiwen Xie">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="My Blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2021/06/15/my-first-blog/" class="post-title-link" itemprop="url">My first blog</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2021-06-15 11:36:37" itemprop="dateCreated datePublished" datetime="2021-06-15T11:36:37+08:00">2021-06-15</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2021-06-23 11:50:21" itemprop="dateModified" datetime="2021-06-23T11:50:21+08:00">2021-06-23</time>
+              </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>This is my first blog. Just for test.</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
     <link itemprop="mainEntityOfPage" href="http://example.com/2021/06/14/hello-world/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -296,9 +437,13 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">1</span>
+          <span class="site-state-item-count">3</span>
           <span class="site-state-item-name">posts</span>
         </a>
+      </div>
+      <div class="site-state-item site-state-tags">
+        <span class="site-state-item-count">4</span>
+        <span class="site-state-item-name">tags</span>
       </div>
   </nav>
 </div>
